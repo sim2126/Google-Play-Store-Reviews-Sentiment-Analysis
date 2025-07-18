@@ -1,17 +1,16 @@
-# Google-Play-Store-Reviews-Sentiment-Analysis
-# Google Play Store Review Sentiment Analysis
+# Google Play Store Reviews Sentiment Analysis
 
-This project builds a machine learning pipeline to perform sentiment analysis on Google Play Store reviews. We demonstrate data retrieval, preprocessing, model implementation (comparing three different approaches), and comprehensive evaluation.
+This project builds a machine learning pipeline to perform sentiment analysis on Google Play Store reviews. The project demonstrates data retrieval, preprocessing, model implementation (comparing three different approaches), and comprehensive evaluation.
 
 ## Core Functionality
 
-1.  **Data Retrieval**: We fetch up to 50,000 of the most recent reviews for a specified Android app from the Google Play Store.
-2.  **Model Comparison**: We implement and compare three distinct sentiment analysis models:
+1.  **Data Retrieval**: Fetches up to 50,000 of the most recent reviews for a specified Android app from the Google Play Store.
+2.  **Model Comparison**: Implements and compares three distinct sentiment analysis models:
     * A rule-based baseline (VADER).
     * A traditional machine learning classifier (Logistic Regression with TF-IDF).
     * A pre-trained transformer model (DistilBERT).
-3.  **Evaluation**: We conduct a proper train/test evaluation using a suite of metrics: accuracy, precision, recall, F1-score, and confusion matrices.
-4.  **Analysis**: We provide a clear analysis of model performance to determine the most suitable model for the task.
+3.  **Evaluation**: Conducts a proper train/test evaluation using a suite of metrics: accuracy, precision, recall, F1-score, and confusion matrices.
+4.  **Analysis**: Provides a clear analysis of model performance to determine the most suitable model for the task.
 
 ## Technical Requirements & Implementation
 
@@ -29,7 +28,7 @@ This project builds a machine learning pipeline to perform sentiment analysis on
 
 ### 2. Model Implementation & Evaluation
 
-* **Baseline Model (VADER)**: `vaderSentiment` is used as a zero-shot, rule-based classifier. It calculates a compound sentiment score which is then mapped to our positive, neutral, or negative labels.
+* **Baseline Model (VADER)**: `vaderSentiment` is used as a zero-shot, rule-based classifier. It calculates a compound sentiment score which is then mapped to positive, neutral, or negative labels.
 * **ML Model (Logistic Regression)**: A `LogisticRegression` classifier from `scikit-learn` is trained on TF-IDF features extracted from the review text. This model learns from the specific vocabulary of the app reviews.
 * **Pre-trained Model (DistilBERT)**: A pre-trained `DistilBERT` model, fine-tuned for sentiment analysis, is used via the `transformers` library pipeline. This model leverages deep learning to understand language context and semantics.
 * **Evaluation Metrics**: All models are evaluated on the test set using a weighted average for precision, recall, and F1-score to account for class imbalance. Accuracy and detailed classification reports are also generated.
@@ -64,6 +63,6 @@ The overall performance of the three models on the test set is summarized below.
 
 ### Conclusion
 
-For a practical and effective sentiment analysis solution for this dataset, the **Logistic Regression model is our recommended choice**. Despite its poor performance on the neutral class, its excellent performance on the majority positive and negative classes gives it the highest overall accuracy and F1-score. It provides a robust and computationally efficient solution.
+For a practical and effective sentiment analysis solution for this dataset, the **Logistic Regression model is the recommended choice**. Despite its poor performance on the neutral class, its excellent performance on the majority positive and negative classes gives it the highest overall accuracy and F1-score. It provides a robust and computationally efficient solution.
 
-If improving the detection of neutral reviews were a primary goal, future work would need to focus on techniques to handle class imbalance, such as oversampling the neutral class (e.g., with SMOTE) or fine-tuning a transformer model like DistilBERT specifically on our three-class dataset.
+If improving the detection of neutral reviews were a primary goal, future work would need to focus on techniques to handle class imbalance, such as oversampling the neutral class (e.g., with SMOTE) or fine-tuning a transformer model like DistilBERT specifically on the three-class dataset.
